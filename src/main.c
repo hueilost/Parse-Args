@@ -4,12 +4,10 @@
 
 int main(int argc, char *argv[]){
     struct ParseC *parse; 
-    
- 	char arg[100];
+    set_args(argc, argv);
 
-    gets(arg);
-    scanf("%c", arg);
-    printf("pointer");
+    if(SelfParse)
+        printf("Self Parse");
 
     return 0;
 }

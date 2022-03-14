@@ -140,17 +140,25 @@ public:
 #endif
 
 //#ifndef __cplusplus
-struct ParseC {
-     int argc;
+#include <stdbool.h>
+#include <string.h>
+
+typedef struct ParseC {
+    int argc;
     char **argv;
+} parse;
+parse p;
 
-    void set_args(){
-        
-    }
-
+void set_args(int argc, char **argv){
+    p.argc = argc;
+    p.argv = argv;
 };
 
-typedef struct ParseC parse_c;
+bool SelfParse() {
+    if (p.argc == 1)
+        return true;
+    else return false;
+}
 //#endif
 
 #endif
