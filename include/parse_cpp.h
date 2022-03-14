@@ -1,6 +1,8 @@
 #ifndef PARSE_CPP_H
 #define PARSE_CPP_H
 
+#ifdef __cplusplus
+
 #include <iostream>
 #include <string.h>
 #include <array>
@@ -119,7 +121,7 @@ public:
 
         if (word1 == true && word2 == true){
             return true;
-        } else return false;
+        } else return false; int8_t signed_integer;
     };
     //todo: add a way to parse all the values in an array.
     bool ParseMultiple();
@@ -135,5 +137,12 @@ public:
     //     return t;
     // };
 };
+#endif
+
+#ifndef __cplusplus
+extern "C" {
+    
+}
+#endif
 
 #endif
