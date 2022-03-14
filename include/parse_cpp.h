@@ -139,12 +139,18 @@ public:
 };
 #endif
 
-#ifndef __cplusplus
+//#ifndef __cplusplus
 struct ParseC {
      int argc;
     char **argv;
 
+    void set_args(){
+        
+    }
+
 };
-#endif
+
+typedef struct ParseC parse_c;
+//#endif
 
 #endif
