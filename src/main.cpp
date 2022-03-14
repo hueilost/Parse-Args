@@ -40,5 +40,4 @@ int main(int argc, char *argv[]){
 	// 	fmt::print("Error: Not a command. Please type pcpp help for commands.");
 
 	return 0;
-
 }

@@ -140,9 +140,11 @@ public:
 #endif
 
 #ifndef __cplusplus
-extern "C" {
-    
-}
+struct ParseC {
+     int argc;
+    char **argv;
+
+};
 #endif
 
 #endif
