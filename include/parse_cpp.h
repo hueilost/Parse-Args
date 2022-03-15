@@ -130,7 +130,7 @@ public:
     bool IfNotWords(uint8_t position, std::string words[], uint8_t len){
         bool t;
         for (uint16_t i = 0; i <= len; ++i){
-            if ( argv[position] != words[i]){
+            if ( argv[1] != words[i]){
                 t = true;
             } else t = false;
         }

@@ -35,5 +35,9 @@ int main(int argc, char *argv[]){
 	if(parse_ptr->ParseDouble(doub, 1, parsin, 2))
 		fmt::print("Parsing double string arguments.");
 
+	std::string words[] = {"double, pointer, nonp, string, parse"}
+	if(parse_ptr->IfNotWords())
+		fmt::print("Not a keyword. Please use pcpp help for commands.");
+
 	return 0;
 }
