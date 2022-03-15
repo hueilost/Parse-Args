@@ -126,24 +126,24 @@ public:
     //todo: add a way to parse all the values in an array.
     bool ParseMultiple();
 
-    //note: parse multiple implimentation needed to complete this function. 
-    // bool IfNotWords(uint8_t position, std::string words[], uint8_t len){
-    //     bool t;
-    //     for (uint16_t i = 0; i <= len; ++i){
-    //         if ( argv[position] != words[i]){
-    //             t = true;
-    //         } else t = false;
-    //     }
-    //     return t;
-    // };
+//    note: parse multiple implimentation needed to complete this function. 
+    bool IfNotWords(uint8_t position, std::string words[], uint8_t len){
+        bool t;
+        for (uint16_t i = 0; i <= len; ++i){
+            if ( argv[position] != words[i]){
+                t = true;
+            } else t = false;
+        }
+        return t;
+    };
 };
 #endif
 
-//#ifndef __cplusplus
+#ifndef __cplusplus
 #include <stdbool.h>
 #include <string.h>
 
-typedef struct ParseC {
+typedef struct parse_c {
     int argc;
     char **argv;
 } parse;
@@ -159,6 +159,12 @@ bool SelfParse() {
         return true;
     else return false;
 }
-//#endif
+
+bool DefaultParse(const char* word) {
+    if ( (p.argc >= 2) && _stricmp( p.argv[1], word) == 0)
+            return true;
+        else return false;
+}
+#endif
 
 #endif

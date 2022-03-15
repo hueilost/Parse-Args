@@ -3,11 +3,13 @@
 
 
 int main(int argc, char *argv[]){
-    struct ParseC *parse; 
     set_args(argc, argv);
 
     if(SelfParse)
         printf("Self Parse");
+    
+    if(DefaultParse("default"))
+        printf("Default Parse");
 
     return 0;
 }
