@@ -34,10 +34,6 @@ int main(int argc, char *argv[]){
 	std::string doub = "double", parsin = "parsing";
 	if(parse_ptr->ParseDouble(doub, 1, parsin, 2))
 		fmt::print("Parsing double string arguments.");
-	
-	// std::string arr[] = {"parsing", "double", "string", "nonp", "pointer"};
-	// if (parse_ptr->IfNotWords(1, arr, 5));
-	// 	fmt::print("Error: Not a command. Please type pcpp help for commands.");
 
 	return 0;
 }

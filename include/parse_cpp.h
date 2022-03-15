@@ -100,10 +100,10 @@ public:
     /**
      * @brief  
      * @note   
-     * @param  word: 
-     * @param  position: 
-     * @param  secondary_word: 
-     * @param  secondary_position: 
+     * @param  word: word to check for
+     * @param  position: position of the word starting from 1 after program name
+     * @param  secondary_word: second word
+     * @param  secondary_position: second position
      * @retval 
      */
     template<class T>
