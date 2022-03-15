@@ -6,10 +6,14 @@
 #include <iostream>
 #include <string.h>
 #include <array>
+#include <iterator>
+#include <vector>
 
-class ParseCpp {
+class ParseArgs {
     int argc;
     char **argv;
+    std::vector<std::string> arguments;
+    std::vector<std::string> description;
 public:
     /**
      * @brief Parse Cpp constructor, takes argc and argv.  
@@ -17,7 +21,7 @@ public:
      * @param  argc: main argc
      * @param  *argv[]: main argv
      */
-    ParseCpp(int argc, char *argv[]){
+    ParseArgs(int argc, char *argv[]){
         this->argc = argc;
         this->argv = argv;
     };
@@ -98,7 +102,7 @@ public:
 
     };
     /**
-     * @brief  
+     * @brief  Parsing Double arguments.
      * @note   
      * @param  word: word to check for
      * @param  position: position of the word starting from 1 after program name
@@ -126,45 +130,68 @@ public:
     //todo: add a way to parse all the values in an array.
     bool ParseMultiple();
 
-//    note: parse multiple implimentation needed to complete this function. 
-    bool IfNotWords(uint8_t position, std::string words[], uint8_t len){
-        bool t;
-        for (uint16_t i = 0; i <= len; ++i){
-            if ( argv[1] != words[i]){
-                t = true;
-            } else t = false;
-        }
-        return t;
-    };
-};
-#endif
-
-#ifndef __cplusplus
-#include <stdbool.h>
-#include <string.h>
-
-typedef struct parse_c {
-    int argc;
-    char **argv;
-} parse;
-parse p;
-
-void set_args(int argc, char **argv){
-    p.argc = argc;
-    p.argv = argv;
-};
-
-bool SelfParse() {
-    if (p.argc == 1)
-        return true;
-    else return false;
-}
-
-bool DefaultParse(const char* word) {
-    if ( (p.argc >= 2) && _stricmp( p.argv[1], word) == 0)
+    //warning: terminate called after throwing an instance of 'std::logic_error' what():  basic_string::_M_construct null not valid
+    bool IfNotWords(const std::vector<std::string> words){
+        std::string value = argv[1];
+        if ( std::find(words.begin(), words.end(), value) != words.end()){
             return true;
-        else return false;
-}
+        } else return false;
+    }
+
+    void add_argument(const char* command, const char* desc){
+        arguments.push_back(command);
+        description.push_back(desc);
+
+        if(DefaultParse(command)){
+            for(uint8_t i = 0; i < arguments.size(); ++i){
+                std::cout << "usage: " << arguments[i] << std::endl;
+            }
+            for(uint8_t i = 0; i < description.size(); ++i){
+                std::cout << "options: \n" << 
+                arguments[i] << " " << description[i] << std::endl;
+            }
+        }
+    }
+    template<class T>
+    void add_argument(T command, T description){
+        if(DefaultParse(command)){
+
+        }
+    }
+
+    // import argparse
+    // parser = argparse.ArgumentParser()
+    // parser.add_argument('--foo', help='foo help')
+    // args = parser.parse_args()
+};
 #endif
+
+// #ifndef __cplusplus
+// #include <stdbool.h>
+// #include <string.h>
+
+// typedef struct parse_c {
+//     int argc;
+//     char **argv;
+// } parse;
+// parse p;
+
+// void set_args(int argc, char **argv){
+//     p.argc = argc;
+//     p.argv = argv;
+// };
+
+// bool SelfParse() {
+//     if (p.argc == 1)
+//         return true;
+//     else return false;
+// }
+
+// bool DefaultParse(const char* word) {
+//     if ( (p.argc >= 2) && _stricmp( p.argv[1], word) == 0)
+//             return true;
+//         else return false;
+// }
+// #endif
 
 #endif
