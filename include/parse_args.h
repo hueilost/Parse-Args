@@ -1,5 +1,9 @@
-#ifndef PARSE_CPP_H
-#define PARSE_CPP_H
+#ifndef PARSE_ARGS_H
+#define PARSE_ARGS_H
+
+#define PARSE_ARGS_VERSION "1.0"
+#define MAJOR_VERSION "1"
+#define MINOR_VERSION "0"
 
 #ifdef __cplusplus
 
@@ -166,32 +170,32 @@ public:
 };
 #endif
 
-// #ifndef __cplusplus
-// #include <stdbool.h>
-// #include <string.h>
+#ifndef __cplusplus
+#include <stdbool.h>
+#include <string.h>
 
-// typedef struct parse_c {
-//     int argc;
-//     char **argv;
-// } parse;
-// parse p;
+typedef struct parse_c {
+    int argc;
+    char **argv;
+} parse;
+parse p;
 
-// void set_args(int argc, char **argv){
-//     p.argc = argc;
-//     p.argv = argv;
-// };
+void set_args(int argc, char **argv){
+    p.argc = argc;
+    p.argv = argv;
+};
 
-// bool SelfParse() {
-//     if (p.argc == 1)
-//         return true;
-//     else return false;
-// }
+bool SelfParse() {
+    if (p.argc == 1)
+        return true;
+    else return false;
+}
 
-// bool DefaultParse(const char* word) {
-//     if ( (p.argc >= 2) && _stricmp( p.argv[1], word) == 0)
-//             return true;
-//         else return false;
-// }
-// #endif
+bool DefaultParse(const char* word) {
+    if ( (p.argc >= 2) && _stricmp( p.argv[1], word) == 0)
+            return true;
+        else return false;
+}
+#endif
 
 #endif

@@ -26,6 +26,12 @@
 #include <fmt/core.h>
 #include <src/format.cc>
 
+// If you dont have fmt installed globally, please use this and remove the one above.
+#ifndef FMT_CORE_H_
+#include "../include/fmt/core.h"
+#include "../include/src/format.cc"
+#endif
+
 #include "../include/parse_args.h"
 
 int main(int argc, char *argv[]){
